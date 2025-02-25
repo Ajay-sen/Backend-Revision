@@ -1,0 +1,60 @@
+This is a short crash course on HTTP:(hyper text transfer protocol)
+
+>> http vs https:
+
+    ->the only diff is the protocol in them , the technology or the methods in both are same
+    ->http sends the exact data, while https adds a layer of encryption to the data, 
+
+>> URL,URI,URN:
+     
+     -> "Uniform Resource Locator/Identifier/Name" are just the terms to get the location or something by they could be reached 
+
+>>HTTP headers:
+
+    -> they are metadata with the protocols, generally key: value pairs
+    ->there are many fucntion where headers could be used like: caching, authentication, manage some state and many more.
+    ->x-prefix: till 2012(then decrepecated)
+
+    ->some categories of headers are:
+        > Request Header: from client
+        > Response header: from server
+        > Representation header: encoding/compression
+        > payload headers: data
+
+    -> most common headers:
+        > accept: application/json( which type of data is coming)
+        > user-agent (from which platform the data is coming)
+        > authorization: Bearer... (some token for authentication)
+        > content-type (image/pdf. etc)
+        > cookie (key:value pair)
+        > cache-control
+
+>> HTTP methods:
+
+    -> Basic set of operations that can  be used to interact with server:
+
+    GET: retrieve a Resource
+    HEAD: No message body (response headers only)
+    OPTIONS: what operations are avilable
+    TRACE: loopback test (get some data)
+    DELETE: remove a Resource
+    PUT: replace a Resource
+    POST: Interact with the resorce (mostly add data)
+    PATCH: change part of a resource
+
+
+>>HTTP status codes:
+
+    1xx: informational
+    2xx: success
+    3xx: redirectional
+    4xx: client error
+    5xx: server error
+
+    some common are (they may vary from company to comapany):
+
+    100: continue   102: processing
+    200: OK     201: created    202: accepted
+    307: temporary redirect 308: permanent redirect
+    400: bad request 401: unauthorized 402: payment req 404: not found
+    500: inetrnal server error 504: gateway time out

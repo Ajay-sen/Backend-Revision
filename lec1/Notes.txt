@@ -1,0 +1,41 @@
+-> A server is a computer or software that provides services, resources, or data to other computers (clients) over a network.
+
+-> JS runtime env: Nodejs
+
+>> File structure:
+    package.json, .env, (readme, git, lint,prettier etc)
+    > src
+        -index (DB connect file)
+        -app.js/main.js    (config, cookie, urlencoded)
+        -constants (enums, DB-name)
+
+    > DB : code for connection to db
+    > Models :data strs, schemas
+    > controllers: methods, functions
+    > Routes: routing are defined here
+    > Middlewares: 
+    > utils: utilities that will be used in diffrent places in project
+    > More (depends)
+
+-> Express is a minimal and flexible Node.js web application framework that simplifies building web servers and APIs.
+
+    - it lets use make request and get response from the server
+    -the server keeps listening all the time for any request
+    - /: home Route
+      /login: login route
+
+>> Start:
+    -we start by initializing the folder  using: npm init
+    -it will ask for basic details and then the package.json folder will be crated
+    -add the "start" : "node index.js" command in the package.json, to run the files
+    -craete a index.js file to start coding
+
+    -now to start the backend we need express , so install it: 
+
+    -require the express in index.js,, write the '/' home route
+    -listen the port to start the server
+
+>> env:
+    -keep all the datas that need not to be shared in this file
+    -for this install dotenv and create a file name .env
+    

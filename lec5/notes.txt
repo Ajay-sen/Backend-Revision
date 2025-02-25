@@ -1,0 +1,231 @@
+## This is the backend project major one and how to do a project in a profesitional way
+
+## git does not track or push a empty folder inside another folder, but to do that , create a file  with name MUST be .gitkeep,then git will start tracking this folder too
+
+>>>structures:
+
+    >> public folder
+    -first create a public folder , to keep temporary files, create a temp folderinside it
+    -here we will be using it keep the temp images
+
+    >>.gitignore
+    -create this file at rool folder, to keep files those needs to be ignored
+    -go to the git ignore generator in browser, and craete files for node, add all those files into your git ignore they almost contain all those files those needs to be ignored
+
+    >>.env
+    -craete this file at the root to contain all private key value pairs
+
+    >>src folder:
+    -this is the folder to contain all other directories
+    -you can use any name of your choice, but using src is more professional
+    -crate some files: app.js, index.js,constants.js inside src
+
+    --if you want to use module form to import packages , then make type: module in package.json
+
+    ## dependency VS dev dependency::::
+        dev dependency are those  tech stacks which we only need during development and do not take them to production level, that is they do not take part in making a project heavier or light eg:nodemon
+
+        doing, npm i nodemon -> mains it to install in main dependecy
+         for  dev dependency install it as: npm install --save-dev nodemon   OR npm i -D nodemon
+
+    --import nodemon:
+        it automatically restarts the server when some chanegs are made in the backend
+    
+    >>Folders inside src:
+        -Controllers:
+         this folder will will contan the functionalities
+        
+        -db:
+        database will be connected here
+        all codes relatrd to databse connection will be here
+
+        -middlewares:
+        this will contain the checks that will verify the requests madem to follow certain condiyins
+
+        -models
+        as already known, here all data structures will get defined
+
+        -routes
+        all routing related stuffs are done here
+        since there are a complex routing process, hence separate flder is crated for thata
+
+        -utils:
+        some funcktionalities are required at different places of foldrs,so they are craeted and kept separately,
+        like some try/catch blocks, error messages etc
+
+>>>prettier:
+        -a dependency, it is used so that all the team members follow the same way of coding style, fonting, spacing
+        -all these details are mentioned inside this
+
+        -hence install it, and add all those rules inside
+        -install: npm i -D prettier
+        -add some manual files:
+            - .prettierrc->all configs of prettier are added here
+        -see the .prettierrc file for how to add the rules
+
+            -prettierignore:add the names of the files in this ,where the above stylings need not to be added 
+
+>>>Mongo db:
+
+        -in next steps connect the databse
+
+    # add the variables which are not so sensitive in the constants file
+
+>>must use packages to start the project: dotenv,mongoose,express
+
+>>databse connection:
+    -> database connection amy anytime give error , so always keep them in a try-catch  block
+    -> "databse is in another continent": so it takes time to fetch it hence use async-await
+
+    ->we will be connecting databse in index.js and express in app.js
+
+
+>>   
+    -> generallt the express is conncetd in the app.js
+    ->cookie-parser is a middleware in Express.js used to parse cookies attached to client requests. It enables:
+
+    Reading cookies from req.cookies (signed cookies from req.signedCookies).
+    Parsing and decrypting signed cookies using a secret key.
+    Handling cookies in authentication, sessions, and user tracking.
+
+    -> CORS (Cross-Origin Resource Sharing) is a security feature that controls how resources on a server can be requested from a different domain.
+
+    ## BOth CORS and Cookie parser are middle ware
+    ## in middlewares we use app.use() unlike in methods
+    ## you need to congif both after installing them using app.use()
+    ## multer is used for file accepting/uploading
+
+>>More on Middlewares:
+
+    Middleware in Express.js is a function that executes between the request(client) and response(server) cycle. It can:
+
+   ->req/res/err: as usual
+    ->next: Call the Next Middleware using next().
+
+
+>>add some utility files :
+
+    ->apierror: this will override the ApiError class , to handle the error from apis
+
+    ->ApiResponse: this will override another class, which will define the datas need to send as a response to apis
+
+    ->similarly asyncHandler, you can define more such
+
+>>next will define models:
+
+    -> file name: user.model.js its just a convention you can also give the name is user.js
+
+
+>>mongoose-aggregate-paginate-v2:
+
+    ->mongoose-aggregate-paginate-v2 is a Mongoose plugin that makes pagination easier when using aggregation queries  
+    -> install it and explore its documentary
+
+>> bcypt VS bcryptjs:
+
+    ->Both bcrypt and bcryptjs are used for password hashing in Node.js, but they have key differences:
+
+    ->The main difference between bcrypt and bcryptjs is that bcrypt uses C++ bindings, making it faster but requiring native dependencies (node-gyp), which can cause installation issues on some systems. In contrast, bcryptjs is a pure JavaScript implementation, making it slower but ensuring it works without dependencies on all platforms. Additionally, bcrypt provides better security as it handles hashing asynchronously by default, while bcryptjs supports both sync and async methods but is considered slightly less secure
+
+    ->use any one, both are fine
+    -> they can hash as well as check the password decrypted form
+
+>> jwt:
+
+    -> JWT (JSON Web Token) is a compact, self-contained token used for secure authentication and data exchange between parties.
+
+    ->usedc for creation of token
+    Structure of JWT
+    A JWT consists of three parts:
+
+    Header – Contains algorithm & token type (e.g., HS256).
+    Payload – Holds user data (e.g., user ID, role).
+    Signature – Ensures integrity using a secret key.
+
+    ->jwt is a token bearer, it is lie a key who ever will be having this key will get the data
+
+>> pre 
+    -> there are a number of hooks which could be used , like we r saving something in databse , but just before saving we want to execute some piece of code , for some varification or some thing, so there we can  add this pre hook
+
+>> cloudinary(file uploading):
+
+    -> there is 2 steps to upload a file from a user:
+    1> take the file fromm user using MULTER and store it in a local folder
+    2> upload that stored file to cloudinary
+
+    -> u can keep the cloudinary related file in eitehr utils folder or service folder
+
+
+>> fs:
+
+    -> The fs (File System) module in Node.js allows interaction with the file system, such as reading, writing, updating, and deleting files.
+
+    -> it comes by default with node , you don't need to install it 
+
+>> multer:
+
+    -> we ll upload the files from user to local using this
+    -> its code file wll be kept in middlewares , since it will act as a middleware in file upload to cloudinary
+    -> to use it , import it in a file and conf it as a middleware, and provide necessary details 
+
+
+>> From now ,  we will implement the logics
+    -> start writing the controllers for each fucntion 
+    -> also craete the routes, for all the controller you write, bcaz that controller will work only when its particular route will be hit (using Router from express)
+
+    ->but where will the routes will be imported??
+        -they are generally imported in app.js, keeping the index.js clean
+
+    -> next write the steps/algo how you will complete that particular task, then start writing the code
+
+
+## Note that if a file has been exporter with "default" then it can be imported with any name on other files, but if not with default than you have to export it with curly braces.
+
+## IMP:: async and await in JavaScript are used to handle asynchronous operations in a cleaner, more readable way. The async keyword makes a function return a promise, allowing the use of await inside it, which pauses execution until the promise resolves. Without async, using await directly in a normal function results in a syntax error. This is because JavaScript requires await to be inside an async function to prevent blocking the entire script. Using async/await improves code readability compared to .then() chains and allows better error handling with try...catch. It also enables efficient execution of multiple promises using Promise.all().
+
+
+>> AccessToken and refreshToken:
+
+    -> Access Token: A short-lived token used to authenticate and authorize API requests. It is included in request headers (e.g., Authorization: Bearer <token>) and expires quickly for security.
+
+    -> Refresh Token: A long-lived token used to obtain a new access token without requiring user login again. It is stored securely and sent to the authentication server to get a fresh access token when the old one expires.
+
+    >> Tokens are randomly generated strings (often in JWT format) that act as digital keys to authenticate and authorize users in web applications.
+    tokens are not users, but they represent an authenticated session of a user.
+
+    When an Access Token expires, the client sends the Refresh Token to the server. The server checks its validity, identifies the user, and issues a new Access Token. The tokens are different but linked internally to the same user.
+
+>> authentication and Authorization:
+
+    > authentication: 
+        -Process of verifying a user's identity.
+        -Requires credentials (e.g., username & password, OTP, biometrics, OAuth).
+        -Managed via authentication methods (e.g., JWT, OAuth, Firebase Auth, Passport.js).
+        -Ensures credentials are correct but does not control access.
+
+    > authorization: 
+        -Process of granting permissions to access resources.
+        -Determines what actions or data the user can access.
+        -eg: After login, only admin users can access the admin dashboard, while regular users see their own profile.
+        - Prevents unauthorized access to restricted areas.
+
+
+>> subscription model:
+
+    see in the models
+
+>> aggregation piplining
+
+    -Aggregation Pipeline in MongoDB is a framework for data processing and transformation using a sequence of stages, where each stage applies an operation to the input documents and passes the result to the next stage
+
+    -in simple, when a certain condition is applied to a certain data, only those filtered data will be passed on to the next stage to apply further conditions
+
+    - It is used for filtering, grouping, sorting, and performing complex computations on data.
+
+    -**agreegation pipling always returns an array
+
+### IMP:: on doing req.user._id    it does not gives a id from the mongo db, but gives a string , that has been creted at mongo db as object TYpe, but mongoose automatically converts it for us to be used as a id,
+
+but while using inside agreegation pipling, mongoose does not work , and entire code directly goes into mongo db, hence we expicitily have to cinvert that as:
+_id: new mongoose.Types.ObjectId(req.user._id)
+

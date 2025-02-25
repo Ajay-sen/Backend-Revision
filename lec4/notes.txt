@@ -1,0 +1,2 @@
+--  here we will be doing more on mongoose
+-- will be doing data modelling for a ecommerce web site

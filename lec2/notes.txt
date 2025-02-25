@@ -1,0 +1,47 @@
+>>>Backend:
+    -in industries we import the packages as modules, using import keyword
+    -for modules, you need to a dd "type" : "module" in package.json
+
+    **You can view the array datas as tree structure in JSON Formatter website as clean tree structure.
+
+>>>Frontend:
+
+    -there are a number of bundlers or tool chain, the basic work they do is to take all the JS files and convert them to final HTML/CSS cntent inside
+
+    - bcaz after all we need html/css at end to display in the frontend
+
+    -eg: vite
+    -for that use: npm create vite@latest .
+    -the dot. at the end signify that all the new files should be created inside the current folder
+
+    -now use : npm i ,to install all the dependencies in package json
+    -run it using ,npm run dev
+
+>>>axios
+
+    -Axios is a promise-based JavaScript library used for making HTTP requests in Node.js and browsers. It provides features like automatic JSON parsing, request and response interception, timeout handling, and easy error handling, making API communication more efficient.
+
+    -Axios offers several advantages over Fetch, making it a preferred choice for handling HTTP requests. 
+    
+    -It automatically parses JSON responses, eliminating the need for an extra .json() call. 
+    
+    -Error handling is more intuitive since Axios rejects promises for HTTP errors like 4xx and 5xx, whereas Fetch only fails on network errors.
+    
+    - It also provides built-in support for request and response interception, timeout handling, and automatic Content-Type headers, making API interactions smoother.
+    
+    - Axios supports request cancellation with CancelToken, a feature that requires extra setup in Fetch using AbortController.
+    
+    - Additionally, Axios works better in older browsers without requiring polyfills and simplifies request handling with cleaner syntax. These features make Axios a more convenient and efficient option compared to Fetch.
+
+    -use get method of the axios to fetch the api of the jokes, inside the useEffect method
+
+    -but why will the backend allow some outside url to fetch its data, hence to allow it w use CORS
+
+    -so just install and add the CORS methis in the backend
+
+>>>proxy:
+    -In web development, proxies help bypass CORS restrictions, route requests in development environments, or hide the client’s identity.
+    -in simple we don t need to add the starting URL to all the routes, just add  this in the proxy
+
+    -in create react app: "proxy": "http://localhost:5000"
+    -in vite: modify vite.config.js(see the file for code), adding proxy inside the server

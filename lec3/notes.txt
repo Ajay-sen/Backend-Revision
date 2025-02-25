@@ -1,0 +1,23 @@
+>>> In this we are approaching mongoose in details.
+
+    - these files are generally kept in models folder
+    -suppose we are going to define the data for a user model and we kept the name user.js, ,but in professional field they keep this name as user.model.js...its just a convention nothing else
+
+    -focus on the MODELS folder here
+    -install mongoose to use it
+    -mongoose is used to create Schemas
+
+>> Syntax(main starting):
+    -import the mongoose:
+     import mongoose from "mongoose"
+
+    -create a schema using the new keyword, and using Schema method of the mongoose: 
+    const userSchema=new mongoose.Schema({})
+
+    -expoort it to use in other sites:
+    export const User=mongoose.model("User",userSchema)
+        "User" is the name given to it , and it is based on the userSchema
+
+        **IMP:  convention of of naming is first CApital, rest all small, eg: User, but it a standarised rule in mongodb that there it words gets converted to plural, and all small letters that is here: users 
+
+        for Todo-> todos

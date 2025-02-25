@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend revision",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ajay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
